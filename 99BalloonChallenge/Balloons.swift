@@ -31,7 +31,7 @@ struct Balloon{
             imageNames += [fileName]
         }
         
-        var randomNumber = Int(arc4random_uniform(UInt32(4)))
+        var randomNumber = Int(arc4random_uniform(UInt32(imageCount)))
         var returnedImagePath: String
         switch randomNumber{
         case 1:

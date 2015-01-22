@@ -14,13 +14,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var UIImageView1: UIImageView!
     
     var myBalloons:[Balloon] = []
+    var balloonsCount = 99
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view, typically from a nib.
         //Initialize 99 balloons
-        for var i = 1 ; i <= 99 ; i++ {
+        for var i = 1 ; i <= balloonsCount ; i++ {
             var balloonInstance = Balloon()
             balloonInstance.balloonNumber = Int(arc4random_uniform(UInt32(100)))
             balloonInstance.imagePath = balloonInstance.GetBalloonImageNames()
@@ -40,12 +41,9 @@ class ViewController: UIViewController {
 
     @IBAction func NextPressedAction(sender: UIBarButtonItem) {
         
-        var randomBalloonIndex = Int(arc4random_uniform(UInt32(99)))
+        var randomBalloonIndex = Int(arc4random_uniform(UInt32(balloonsCount)))
         
         //Binding to UI elements
-//        ballonsLabel.text = "\(myBalloons[randomBalloonIndex].balloonNumber)" + " Balloons"
-//        UIImageView1.image = UIImage(named: myBalloons[randomBalloonIndex].imagePath)
-        
         UIView.transitionWithView(self.view, duration: 2, options: UIViewAnimationOptions.TransitionCrossDissolve, animations: {
             self.UIImageView1.image = UIImage(named: self.myBalloons[randomBalloonIndex].imagePath)
             self.ballonsLabel.text = "\(self.myBalloons[randomBalloonIndex].balloonNumber)" + " Balloons"
